@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface Dice : NSObject
-@property int currentDiceValue;
+@property (nonatomic) NSInteger currentDiceValue;
+@property (nonatomic) NSInteger diceIndex;
+- (instancetype)initWithIndex: (int)index;
 -(void)randomize;
 @end

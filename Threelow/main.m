@@ -9,53 +9,88 @@
 #import <Foundation/Foundation.h>
 #import "Dice.h"
 #import "UserInput.h"
-
+#import "GameController.h"
 
 
 int main(int argc, const char * argv[]) {
 
     BOOL REPLAY = YES;
     
+    
     UserInput *collector = [[UserInput alloc] init];
+    GameController *functionCaller =[[GameController alloc] init];
+    
+    // init all dices :
+    Dice *dice1 = [[Dice alloc] initWithIndex:1];
+    Dice *dice2 = [[Dice alloc] initWithIndex:2];
+    Dice *dice3 = [[Dice alloc] initWithIndex:3];
+    Dice *dice4 = [[Dice alloc] initWithIndex:4];
+    Dice *dice5 = [[Dice alloc] initWithIndex:5];
+    
+    
+    NSArray *array1 = @[dice1, dice2, dice3, dice4, dice5];
+    NSMutableArray *array2;
+    
+   
     
     
     
     
     
-    
-    
-    
-    
+    // while loop starts
     while(REPLAY){
         
-    NSString *menuAndInput = [collector printMenuAndUserInput:@"\n---- Menu ---- \n roll - Roll Dice \n hold - Select dice to hold"];
+  
+   NSString *menuAndInput = [collector printMenuAndUserInput:@"\n---- Menu ---- \n roll - Roll Dice \n hold - Select dice to hold"];
+      
         
+        
+        
+    // ROLL DICES
     if ([[menuAndInput lowercaseString] containsString:@"roll"]){
-        REPLAY = YES;
+        for(int i=0; i <array1.count ; i++){
+            [array1[i] randomize];
+        }
+
     }
+        
+        
+        
+        
+        
+    // HOLD DICES
+    if ([[menuAndInput lowercaseString] containsString:@"hold"]){
+        
+        int input;
+        scanf("%d",&input);
+        NSLog(@"Which dice do you want to hold ? (by index: 1,2,3,4,5)");
+        
+        
+        
+        [functionCaller holdDie:array1[input]];
+        [array1 removeValueAtIndex:input fromPropertyWithKey:@"hey"];
+
+    }
+        
+        
+        
+        
+        
     
-    else{
+        
+        
+        
+        
+        
+        
+        
+    if ([[menuAndInput lowercaseString] containsString:@"quit"]){
         REPLAY = NO;
         break;
     }
         
-        
-        
-    
-    Dice *dice1 = [[Dice alloc] init];
-    Dice *dice2 = [[Dice alloc] init];
-    Dice *dice3 = [[Dice alloc] init];
-    Dice *dice4 = [[Dice alloc] init];
-    Dice *dice5 = [[Dice alloc] init];
-    
-    [dice1 randomize];
-    [dice2 randomize];
-    [dice3 randomize];
-    [dice4 randomize];
-    [dice5 randomize];
-    
-    
-    }
+   
+    }// End while loop
     
     
     

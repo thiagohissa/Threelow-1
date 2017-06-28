@@ -10,12 +10,21 @@
 
 @implementation Dice
 
+- (instancetype)initWithIndex: (int)index
+{
+    self = [super init];
+    if (self) {
+        _diceIndex = index;
+    }
+    return self;
+}
+
 
 -(void)randomize
 {
     
     self.currentDiceValue = arc4random_uniform(6)+1;
-    NSLog(@"Dice value: %d",self.currentDiceValue);
+    NSLog(@"Dice %d: %d",(int)self.diceIndex,(int)self.currentDiceValue);
     
 }
 
