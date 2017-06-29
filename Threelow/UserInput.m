@@ -17,7 +17,8 @@
     
     char input[255];
     fgets(input, 255, stdin);
-    NSString *userInput = [NSString stringWithUTF8String:input];
+    NSString *userInput = [NSString stringWithCString:input encoding: NSUTF8StringEncoding];
+    [userInput stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
     
     
     

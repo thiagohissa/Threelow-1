@@ -41,13 +41,13 @@ int main(int argc, const char * argv[]) {
     while(REPLAY){
         
   
-   NSString *menuAndInput = [collector printMenuAndUserInput:@"\n---- Menu ---- \n roll - Roll Dice \n hold - Select dice to hold"];
+   NSString *menuAndInput = [collector printMenuAndUserInput:@"\n---- Menu ---- \n 1 - Roll Dice \n 2 - Select dice to hold \n 3 - Select dice to unhold \n 4 - Reset all held dices"];
       
         
         
         
     // ROLL DICES
-    if ([[menuAndInput lowercaseString] containsString:@"roll"]){
+    if ([[menuAndInput lowercaseString] containsString:@"1"]){
         for(int i=0; i <array1.count ; i++){
             [array1[i] randomize];
         }
@@ -60,23 +60,20 @@ int main(int argc, const char * argv[]) {
         
         
     // HOLD DICES
-    if ([[menuAndInput lowercaseString] containsString:@"hold"]){
+    if ([[menuAndInput lowercaseString] containsString:@"2"]){
         
         int input;
         NSLog(@"Which dice do you want to hold ? (by index: 1,2,3,4,5)");
         scanf("%d",&input);
         
-        [functionCaller holdDie:array1[input-1]];
+         [functionCaller holdDie:array1[input-1]];
         
         
         for(int i=0; i <array1.count ; i++){
             [array1[i] randomize];
         }
         
-        [functionCaller importArray1:array1];
-        
-
-        
+          [functionCaller importArray1:array1];
 
     }
         
@@ -87,28 +84,42 @@ int main(int argc, const char * argv[]) {
         
         
         
-    // UN-HOLD DICES
-//    if ([[menuAndInput lowercaseString] containsString:@"unhold"]){
-//        
-//        int input;
-//        NSLog(@"Which dice do you want to unhold ? (by index: 1,2,3,4,5)");
-//        scanf("%d",&input);
-//        
-//        [functionCaller holdDie:array1[input-1]];
-//        
-//        
-//        for(int i=0; i <array1.count ; i++){
-//            [array1[i] randomize];
-//        }
-//        
-//        [functionCaller importArray1:array1];
-//        
-//        
-//        
-//    }
+     //UN-HOLD DICES
+    if ([[menuAndInput lowercaseString] containsString:@"3"]){
+        
+        int input;
+        NSLog(@"Which dice do you want to unhold ? (by index: 1,2,3,4,5)");
+        scanf("%d",&input);
+        
+        [functionCaller unholdDie:array1[input-1]];
+        
+        
+        for(int i=0; i <array1.count ; i++){
+            [array1[i] randomize];
+        }
+        
+        [functionCaller importArray1:array1];
+        
+        NSLog(@"Done: %d is not longer held", input);
+        
+    }
         
         
         
+        
+    
+        
+    //RESET ALL HELD DICES
+    if ([[menuAndInput lowercaseString] containsString:@"4"]){
+        
+        
+        for(int i=0; i <array1.count ; i++){
+            [functionCaller resetAllHeld:array1[i]];
+        }
+        
+        NSLog(@"Done: all dices were reset to unheld");
+        
+    }
         
         
         
@@ -132,7 +143,7 @@ int main(int argc, const char * argv[]) {
     }
         
    
-    }// End while loop
+}// End while loop
     
     
     
