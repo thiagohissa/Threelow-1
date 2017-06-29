@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         _diceIndex = index;
+        _HOLD = NO;
     }
     return self;
 }
@@ -22,11 +23,18 @@
 
 -(void)randomize
 {
-    
+    if(!self.HOLD){
     self.currentDiceValue = arc4random_uniform(6)+1;
     NSLog(@"Dice %d: %d",(int)self.diceIndex,(int)self.currentDiceValue);
+    }
+    else{
+        NSLog(@"Dice %d: %d",(int)self.diceIndex,(int)self.currentDiceValue);
+    }
     
 }
+
+
+
 
 
 

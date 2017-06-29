@@ -51,6 +51,7 @@ int main(int argc, const char * argv[]) {
         for(int i=0; i <array1.count ; i++){
             [array1[i] randomize];
         }
+        [functionCaller importArray1:array1];
 
     }
         
@@ -62,15 +63,56 @@ int main(int argc, const char * argv[]) {
     if ([[menuAndInput lowercaseString] containsString:@"hold"]){
         
         int input;
-        scanf("%d",&input);
         NSLog(@"Which dice do you want to hold ? (by index: 1,2,3,4,5)");
+        scanf("%d",&input);
+        
+        [functionCaller holdDie:array1[input-1]];
         
         
+        for(int i=0; i <array1.count ; i++){
+            [array1[i] randomize];
+        }
         
-        [functionCaller holdDie:array1[input]];
-        [array1 removeValueAtIndex:input fromPropertyWithKey:@"hey"];
+        [functionCaller importArray1:array1];
+        
+
+        
 
     }
+        
+        
+        
+        
+        
+        
+        
+        
+    // UN-HOLD DICES
+//    if ([[menuAndInput lowercaseString] containsString:@"unhold"]){
+//        
+//        int input;
+//        NSLog(@"Which dice do you want to unhold ? (by index: 1,2,3,4,5)");
+//        scanf("%d",&input);
+//        
+//        [functionCaller holdDie:array1[input-1]];
+//        
+//        
+//        for(int i=0; i <array1.count ; i++){
+//            [array1[i] randomize];
+//        }
+//        
+//        [functionCaller importArray1:array1];
+//        
+//        
+//        
+//    }
+        
+        
+        
+        
+        
+        
+        
         
         
         

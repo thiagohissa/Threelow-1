@@ -13,7 +13,9 @@
 @property (nonatomic) NSArray *arrayOfDices;
 @property (nonatomic) NSMutableArray *arrayOfHeldDices;
 
--(void)holdDie:(Dice*)dice;
+-(void)importArray1: (NSArray*)array;
+
+-(void)holdDie:(Dice *)dice;
 
 
 @end

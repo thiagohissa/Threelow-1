@@ -11,6 +11,7 @@
 @interface Dice : NSObject
 @property (nonatomic) NSInteger currentDiceValue;
 @property (nonatomic) NSInteger diceIndex;
+@property (nonatomic) BOOL HOLD;
 - (instancetype)initWithIndex: (int)index;
 -(void)randomize;
 @end

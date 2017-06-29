@@ -14,14 +14,16 @@
 
 
 
--(void)holdDie:(Dice*)dice{
+-(void)holdDie:(Dice *)dice{
     
-    [self.arrayOfHeldDices addObject:dice];
+    dice.HOLD=YES;
     
 }
 
 
-
+-(void)importArray1: (NSArray*)array{
+    [self.arrayOfDices arrayByAddingObject:array];
+}
 
 
 
